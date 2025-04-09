@@ -19,10 +19,6 @@ public class PuntoVenta {
     @Column(name = "fechaVenta")
     private Date fechaVenta;
 
-    @ManyToOne
-    @JoinColumn(name = "idProducto", referencedColumnName = "idProducto")
-    private Producto producto;
-
     @Column(name = "cantidadVendido")
     private int cantidadVendido;
 
@@ -31,10 +27,9 @@ public class PuntoVenta {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PuntoVenta(Date fechaVenta, Producto producto, int cantidadVendido) {
+	public PuntoVenta(Date fechaVenta,  int cantidadVendido) {
 		super();
 		this.fechaVenta = fechaVenta;
-		this.producto = producto;
 		this.cantidadVendido = cantidadVendido;
 	}
 
@@ -51,13 +46,7 @@ public class PuntoVenta {
 		this.fechaVenta = fechaVenta;
 	}
 
-	public Producto getProducto() {
-		return producto;
-	}
 
-	public void setProducto(Producto producto) {
-		this.producto = producto;
-	}
 
 	public int getCantidadVendido() {
 		return cantidadVendido;
