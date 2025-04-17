@@ -1,1 +1,131 @@
-<p>gestiondepedidos works!</p>
+<!-- gestion-pedidos.component.html -->
+
+  <div class="page-container">
+    <h1 class="page-title">
+      Gestión de Pedidos
+      <span class="underline"></span>
+    </h1>
+  
+    <div class="toolbar">
+      <h2 class="subtitle">Pedidos en Camino</h2>
+      <button class="btn btn-primary" (click)="openModal()">REALIZAR PEDIDO</button>
+    </div>
+  
+    <table class="table pedidos-table">
+      <thead>
+        <tr>
+          <th>ID Pedido</th>
+          <th>Lista Productos</th>
+          <th>Estado del Pedido</th>
+          <th>Fecha estimada</th>
+          <th>Confirmar Pedido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of pedidos">
+          <td>{{ pedido.id }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let item of pedido.productos">{{ item }}</li>
+            </ul>
+          </td>
+          <td>{{ pedido.estado }}</td>
+          <td>{{ pedido.fechaEstimado | date:'shortDate' }}</td>
+          <td>
+            <button
+              class="btn btn-success"
+              [disabled]="pedido.estado !== 'En Camino'"
+              (click)="confirmarPedido(pedido)"
+            >
+              CONFIRMAR
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Modal Registrar Pedido -->
+  <div class="modal-overlay" *ngIf="showModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2>Registrar Pedido</h2>
+        <button class="close-btn" (click)="closeModal()">×</button>
+      </div>
+  
+      <div class="modal-body">
+        <form (ngSubmit)="false">
+          <!-- dentro de tu modal-body, en lugar del input actual -->
+<div class="form-group autocomplete">
+    <label>Nombre del Producto</label>
+    <input
+      type="text"
+      [(ngModel)]="nuevoItem.producto"
+      (ngModelChange)="onProductoChange($event)"
+      name="producto"
+      autocomplete="off"
+    />
+  
+    <!-- lista de sugerencias -->
+    <div class="suggestions" *ngIf="productSuggestions.length">
+      <div
+        class="suggestion"
+        *ngFor="let s of productSuggestions"
+        (click)="selectSuggestion(s)"
+      >
+        {{ s }}
+      </div>
+    </div>
+  </div>
+  
+  
+          <div class="form-group">
+            <label>Producto</label>
+            <input type="text" [(ngModel)]="nuevoItem.producto" name="producto" />
+          </div>
+  
+          <div class="row">
+            <div class="form-group col">
+              <label>Cantidad a pedir</label>
+              <input type="number" [(ngModel)]="nuevoItem.cantidad" name="cantidad" />
+            </div>
+            <div class="form-group col">
+              <label>Proveedor</label>
+              <select [(ngModel)]="nuevoItem.proveedor" name="proveedor">
+                <option value="">Selecciona un proveedor</option>
+                <option *ngFor="let p of proveedores" [value]="p">{{ p }}</option>
+              </select>
+            </div>
+            <div class="form-group col-auto align-end">
+              <button type="button" class="btn btn-primary" (click)="agregarItem()">AGREGAR</button>
+            </div>
+          </div>
+        </form>
+  
+        <table class="table modal-table">
+          <thead>
+            <tr>
+              <th>Nombre de Producto</th>
+              <th>Producto</th>
+              <th>Cantidad Pedida</th>
+              <th>Proveedor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let it of items; let i = index">
+              <td>{{ it.nombreProducto }}</td>
+              <td>{{ it.producto }}</td>
+              <td>{{ it.cantidad }}</td>
+              <td>{{ it.proveedor }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="modal-footer">
+        <button class="btn btn-primary" (click)="realizarPedidoModal()">REALIZAR PEDIDO</button>
+      </div>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,176 @@
+/* gestion-pedidos.component.scss */
+.page-container {
+    padding: 1rem 2rem;
+  }
+  
+  .page-title {
+    position: relative;
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  
+  }
+  
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  
+    .subtitle {
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin: 0;
+    }
+  }
+  
+  .pedidos-table {
+    width: 100%;
+    border-collapse: collapse;
+    th {
+      background-color: #003d66;
+      color: #fff;
+      padding: 0.75rem;
+      text-align: center;
+    }
+    td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      vertical-align: top;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  }
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-container {
+    background: #f2f2f2;
+    border-radius: 6px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+  
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
+  
+  .modal-body {
+    padding: 1rem;
+  
+    .form-group {
+      margin-bottom: 0.75rem;
+  
+      label {
+        display: block;
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+      }
+  
+      input, select {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+        font-size: 0.9rem;
+      }
+    }
+  
+    .row {
+      display: flex;
+      gap: 1rem;
+  
+      .col {
+        flex: 1;
+      }
+      .col-auto {
+        flex: 0 0 auto;
+      }
+      .align-end {
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+  
+    .modal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+  
+      th {
+        background-color: #003d66;
+        color: #fff;
+        padding: 0.5rem;
+        text-align: left;
+      }
+      td {
+        border: 1px solid #ccc;
+        padding: 0.4rem;
+      }
+      tbody tr:nth-child(even) {
+        background: #eaeaea;
+      }
+    }
+  }
+  
+  .modal-footer {
+    padding: 1rem;
+    background: #fff;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* gestion-pedidos.component.scss */
+
+/* Asegúrate de que el contenedor .autocomplete sea relativo */
+.autocomplete {
+    position: relative;
+  }
+  
+  .suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #bbb;
+    border-top: none;
+    max-height: 180px;
+    overflow-y: auto;
+    z-index: 50;
+  }
+  
+  .suggestion {
+    padding: 0.5rem;
+    cursor: pointer;
+    &:hover {
+      background: #eee;
+    }
+  }
+  
+  

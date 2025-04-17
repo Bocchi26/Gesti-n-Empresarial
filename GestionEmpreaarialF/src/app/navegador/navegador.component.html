@@ -1,1 +1,57 @@
-<p>navegador works!</p>
+<div class="menu">
+  
+  <img src="assets/logo POS.png" alt="Logo" class="logo" />
+  <div (click)="toggleSubmenu()" class="menu-title"
+       routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }">
+    <strong>Reportes</strong>
+    <span [class.rotated]="submenuAbierto">&#9662;</span>
+  </div>
+
+  <ul *ngIf="submenuAbierto" class="submenu">
+    <li>
+      <a routerLink="/entradaysalidas"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }">
+        Entrada y salida
+      </a>
+    </li>
+    <li>
+      <a routerLink="/gestionInventario"
+         routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }">
+        Inventario
+      </a>
+    </li>
+  </ul>
+
+  <a routerLink="/gestionPedidos"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{ exact: true }">
+    <strong>Gestión de Pedidos</strong>
+  </a>
+  <a routerLink="/agregarProductos"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{ exact: true }">
+    Agregar Producto
+  </a>
+  <a routerLink="/consultarProductos"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{ exact: true }">
+    Consultar Producto
+  </a>
+  <a routerLink="/actualizarProducto"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{ exact: true }">
+    Actualizar Producto
+  </a>
+  <a routerLink="/registrarSalida"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{ exact: true }">
+    Registrar Salida
+  </a>
+  <a routerLink="/cerrarSesion"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{ exact: true }">
+    Cerrar Sesión
+  </a>
+</div>

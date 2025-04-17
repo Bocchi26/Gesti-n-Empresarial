@@ -1,0 +1,45 @@
+.sidebar {
+    width: 250px;
+    background-color: #c5dbea;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .logo {
+    width: 100%;
+    max-width: 160px;
+    margin-bottom: 20px;
+  }
+  
+  .menu a, .menu .menu-title {
+    display: block;
+    color: #000;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .menu .submenu {
+    margin-left: 15px;
+    list-style: none; 
+  }
+  
+  .menu .submenu li a {
+    font-weight: normal;
+    padding: 6px 10px;
+  }
+  
+  .rotated {
+    display: inline-block;
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+  }
+.menu a.active,
+.menu .menu-title.active {
+  background-color: #1e88e5;  /* el color que tú prefieras */
+
+}
+
+/* Si quieres mantener las esquinas redondeadas o cualquier otro detalle: */
