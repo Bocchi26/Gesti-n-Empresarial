@@ -1,1 +1,53 @@
-<p>login works!</p>
+<div class="login-wrapper" >
+  
+  <!-- Contenedor principal del formulario de inicio de sesión -->
+<div class="login-container">
+    <!-- Panel izquierdo -->
+    <div class="login-left">
+      <img src="assets/logo POS.png" alt="Super Market Logo" class="logo" />
+      <h2>Welcome <br>Back!</h2>
+    </div>
+  
+    <!-- Panel derecho con el formulario -->
+    <div class="login-right">
+      <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="login-form">
+        <div class="form-group">
+          <label for="id_usuario">Usuario</label>
+          <input
+            type="text"
+            id="id_usuario"
+            [(ngModel)]="id_usuario"
+            name="id_usuario"
+            placeholder="Usuario"
+            required
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="contrasena">Contraseña</label>
+          <input
+            type="password"
+            id="contrasena"
+            [(ngModel)]="contrasena"
+            name="contrasena"
+            placeholder="Contraseña"
+            required
+          />
+        </div>
+  
+        <button type="submit" [disabled]="loginForm.invalid">INGRESAR</button>
+        <p *ngIf="error" class="error">{{ error }}</p>
+      </form>
+    </div>
+  </div>
+</div>
+  
+  <!-- Modal de bienvenida -->
+  <div *ngIf="showModal" class="modal" (click)="closeModal()">
+    <div class="modal-content">
+      <h2 *ngIf="isLoginSuccessful">¡Bienvenido!</h2>
+      <h2 *ngIf="!isLoginSuccessful">Error</h2>
+      <p *ngIf="isLoginSuccessful">Inicio de sesión exitoso. ¡Nos alegra verte de nuevo!</p>
+      <p *ngIf="!isLoginSuccessful">Hubo un problema con el inicio de sesión. Por favor, Ingresa las credenciales correctas.</p>
+    </div>
+  </div>

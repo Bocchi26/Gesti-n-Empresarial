@@ -1,1 +1,58 @@
-<p>entradaysalida works!</p>
+<div class="main-container p-4">
+    <h1 class="fw-bold" style="font-size: 3rem;">Entradas y Salidas</h1>
+  
+    <!-- Filtros -->
+    <div class="row align-items-end mt-4">
+        <div class="col-md-4">
+          <label for="nombreProducto" class="form-label fw-semibold">Nombre del Producto</label>
+          <input type="text" class="form-control" id="nombreProducto" [(ngModel)]="nombre">
+        </div>
+        <div class="col-md-3">
+          <label for="fechaInicio" class="form-label fw-semibold">Fecha de Inicio</label>
+          <input type="date" class="form-control" id="fechaInicio" [(ngModel)]="fechaInicio" [attr.max]="fechaFin" (change)="validarFechas()">
+        </div>
+        <div class="col-md-3">
+          <label for="fechaFin" class="form-label fw-semibold">Fecha de Fin</label>
+          <input type="date" class="form-control" id="fechaFin" [(ngModel)]="fechaFin"  [attr.min]="fechaInicio" (change)="validarFechas()">
+        </div>
+        <div *ngIf="!fechaInvalida && mv" class="text-danger mt-1">
+          La fecha de fin no puede ser menor que la fecha de inicio.
+        </div>
+      </div>
+      
+  
+    <!-- Botón Centrado -->
+    <div class="d-flex justify-content-center mt-4">
+        <div class="col-md-2">
+          <button class="btn w-100" style="background-color: #1b6394; color: white;" (click)="filtrarMovimientos()">FILTRAR</button>
+        </div>
+      </div>
+      
+    
+  <!-- Tabla -->
+  <div class="table-container">
+    <table class="table custom-table">
+      <thead>
+        <tr>
+          <th>ID del producto</th>
+          <th>Nombre</th>
+          <th>Cantidad Movida</th>
+          <th>Tipo de movimiento</th>
+          <th>Fecha del movimiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movimiento of movimientos">
+          <td>{{ movimiento.producto.idProducto }}</td>
+          <td>{{ movimiento.producto.nombre }}</td>
+          <td>{{ movimiento.cantidad }}</td>
+          <td>{{ movimiento.tipo }}</td>
+          <td>{{movimiento.fecha}} </td>
+        </tr>
+        <tr *ngIf="mensajeError">
+          <td colspan="4" class="text-center text-danger">{{ mensajeError }}</td>
+        </tr>
+      </tbody>      
+    </table>
+  </div>
+</div>

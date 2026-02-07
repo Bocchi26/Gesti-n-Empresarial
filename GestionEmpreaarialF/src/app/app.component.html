@@ -1,11 +1,21 @@
 
-<router-outlet></router-outlet>
-<div class="layout">
-  <div class="sidebar">
-    <app-navegador></app-navegador>
+<ng-container *ngIf="!isLoggedIn; else mainLayout">
+  <!-- Login antes de hacer nada -->
+  <div class="login">
+    <app-login (loginSuccess)="onLoginSuccess()"></app-login>
   </div>
+</ng-container>
 
-  <div class="content">
-    <router-outlet></router-outlet>
+<ng-template #mainLayout>
+  <!-- Layout principal sólo tras login -->
+  <div class="layout">
+    <aside class="sidebar">
+      <app-navegador></app-navegador>
+    </aside>
+    <section class="content">
+      <!-- ÚNICO router-outlet para toda la app -->
+      <router-outlet></router-outlet>
+    </section>
   </div>
-</div>
+</ng-template>
+

@@ -1,1 +1,138 @@
-<p>consultarproductos works!</p>
+<div class="productos-container">
+  <h2>Consultar Productos</h2>
+  
+    <!-- Filtros -->
+    <div class="filtros">
+      <label for="nombre">Nombre del Producto</label>
+      <label for="tipo">Tipo de Producto</label>
+      <label for="estado">Estado del Producto</label>
+      <input type="text" id="nombre" [(ngModel)]="nombre" placeholder="Buscar por nombre">
+  
+      
+      <select id="tipo" [(ngModel)]="tipo">
+        <option value="">Seleccionar tipo</option>
+        <option value="frutas">Frutas</option>
+        <option value="verduras">Verduras</option>
+        <option value="aseo">Aseo</option>
+        <option value="bebidas">Bebidas</option>
+        <option value="procesados">Procesados</option>
+      </select>
+  
+      
+      <select id="estado" [(ngModel)]="estado">
+        <option value="">Seleccionar estado</option>
+        <option value="activo">Activo</option>
+        <option value="inactivo">Inactivo</option>
+      </select>
+  
+      <button (click)="aplicarFiltros()">Buscar</button>
+    </div>
+  
+    <!-- Tabla de productos -->
+    <table *ngIf="productos.length > 0">
+        <thead>
+          <tr>
+            <th>ID del producto</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Cantidad (en stock)</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos"  (click)="abrirModal(producto)">
+            <td>{{ producto.idProducto }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.estado }}</td>
+            <td>{{ producto.stock }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div *ngIf="productos.length === 0 && pb == true">
+        <p>No se encontró ningún producto que coincida con los criterios ingresados.</p>
+      </div>
+  <!-- Modal con backdrop -->
+
+
+
+  <div class="modal-backdrop" *ngIf="mostrarModal" (click)="cerrarModal()">
+    <div class="modalxd" (click)="$event.stopPropagation()">
+      <h2>Consultar Datos</h2>
+      <div class="modal-content">
+        <form class="form-grid" style="width: 50%; float: left;">
+          <div class="form-group full-width">
+            <label>Nombre del Producto</label>
+            <input type="text" [value]="producto.nombre" readonly />
+          </div>
+
+          <div class="form-group">
+            <label>Tipo de Producto</label>
+            <input type="text" [value]="producto.tipo" readonly />
+          </div>
+
+          <div class="form-group">
+            <label>Fecha de Vencimiento</label>
+            <input type="text" [value]="producto.fechaVencimiento" readonly placeholder="dd/mm/aaaa" />
+          </div>
+
+          <div class="form-group">
+            <label>Precio Unitario</label>
+            <input type="number" [value]="producto.precioUnitario" readonly />
+          </div>
+
+          <div class="form-group">
+            <label>Precio de Compra</label>
+            <input type="number" [value]="producto.precioCompra" readonly />
+          </div>
+
+          <div class="form-group">
+            <label>Estado</label>
+            <input type="text" [value]="producto.estado" readonly />
+            
+          </div>
+
+          <div class="form-group">
+            <label>Cantidad</label>
+            <input type="text" [value]="producto.stock" readonly />
+          </div>
+          
+          <div class="form-group full-width">
+            <label>Descripción</label>
+            <textarea [value]="producto.descripcion" readonly></textarea>
+          </div>
+        </form>
+
+        <table class="table custom-table" style="width: 45%; float: right;">
+          <thead>
+            <tr>
+              <th>ID del producto</th>
+              <th>Nombre</th>
+              <th>Cantidad Movida</th>
+              <th>Tipo de movimiento</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let movimiento of movimientos">
+              <td>{{ movimiento.producto.idProducto }}</td>
+              <td>{{ movimiento.producto.nombre }}</td>
+              <td>{{ movimiento.cantidad }}</td>
+              <td>{{ movimiento.tipo }}</td>
+              <td>{{ movimiento.fecha }}</td>
+            </tr>
+            <tr *ngIf="movimientos.length === 0">
+              <td colspan="5" class="text-center text-danger">No se encontraron movimientos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+          

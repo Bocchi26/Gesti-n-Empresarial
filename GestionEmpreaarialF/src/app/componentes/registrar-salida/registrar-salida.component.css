@@ -1,0 +1,107 @@
+.inventory-container {
+    width: 90%;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .inventory-container h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .inventory-container .subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .inventory-table th,
+  .inventory-table td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .inventory-table th {
+    background-color: #0D2137;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .inventory-table td {
+    background-color: white;
+  }
+  
+  .low-stock {
+    color: #c00;
+    font-weight: bold;
+  }
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+  .modal-salida {
+    background: #d9d9d9;
+    padding: 2rem;
+    margin: 5% auto;
+    width: 30%;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .modal-salida h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+  
+  .form-salida {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  input, select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+  }
+  
+  button {
+    grid-column: 1 / 3;
+    padding: 0.7rem;
+    background-color: #1877b5;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #145a86;
+  }
+  

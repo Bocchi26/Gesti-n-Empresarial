@@ -1,0 +1,52 @@
+.main-container {
+    padding: 2rem;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .filters-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .btn-filtrar {
+    background-color: #1b6394;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    padding: 0.5rem 1rem;
+  }
+  
+  .table-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .custom-table {
+    width: 80%;
+    min-height: 300px;
+    border: 2px solid #0D2137;
+  }
+  
+  .custom-table thead th {
+    background-color: #0D2137;
+    color: white;
+    text-align: center;
+  }
+  
+  .custom-table tbody td {
+    text-align: center;
+}
