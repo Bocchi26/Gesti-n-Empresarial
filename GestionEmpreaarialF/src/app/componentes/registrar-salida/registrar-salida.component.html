@@ -1,1 +1,57 @@
-<p>registrar-salida works!</p>
+<div class="inventory-container">
+    <h1>Registrar Salida</h1>
+    <p class="subtitle">Tabla de Contenido</p>
+  
+    <table class="inventory-table">
+      <thead>
+        <tr>
+          <th>ID del producto</th>
+          <th>Nombre</th>
+          <th>Cantidad Disponible</th>
+          <th>Cantidad en Camino</th>
+          <th>Stock Bajo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of productos" (click)="selectProduct(p)">
+          <td>{{ p.idProducto }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.stock }}</td>
+          <td>{{ p.cantidadEnCamino }}</td>
+          <td>
+            <span [ngClass]="{'low-stock': p.stock <= 10, 'sufficient-stock': p.stock > 10}" 
+                [style.backgroundColor]="p.stock <= 10 ? 'red' : 'green'" 
+                style="display: inline-block; width: 20px; height: 20px; border: 2px solid;">
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal-backdrop" *ngIf="mostrarModalSalida" (click)="cerrarModalSalida()">
+    <div class="modal-salida" (click)="$event.stopPropagation()">
+      <h2>Registrar salida</h2>
+      <form class="form-salida">
+        
+        <div class="form-group">
+          <label>Cantidad a retirar</label>
+          <input type="number" [(ngModel)]="cantidadRetirar" name="cantidadRetirar" required />
+        </div>
+  
+        <div class="form-group">
+          <label>Motivo</label>
+          <select [(ngModel)]="motivoSalida" name="motivoSalida" required>
+            <option value="" disabled selected>Selecciona un motivo</option>
+            <option value="perdida">Pérdida</option>
+            <option value="devolucion">Devolución</option>
+            <option value="caducidad">Caducidad</option>
+          </select>
+        </div>
+  
+        <button type="submit" (click)="registrarSalida()">REGISTRAR SALIDA</button>
+        
+      </form>
+    </div>
+  </div>
+  

@@ -56,6 +56,28 @@ public class EntradasSalidas {
 		this.producto = producto;
 		this.puntoVenta = puntoVenta;
 	}
+	
+
+	public EntradasSalidas( String tipo, Date fecha, int cantidad, String origen, Usuario usuario,
+			Producto producto) {
+		super();
+		this.tipo = tipo;
+		this.fecha = fecha;
+		this.cantidad = cantidad;
+		this.origen = origen;
+		this.usuario = usuario;
+		this.producto = producto;
+	}
+	
+	public EntradasSalidas( String tipo, Date fecha, int cantidad, String origen,
+			Producto producto) {
+		super();
+		this.tipo = tipo;
+		this.fecha = fecha;
+		this.cantidad = cantidad;
+		this.origen = origen;
+		this.producto = producto;
+	}
 
 	public Long getIdEntradaSalida() {
 		return idEntradaSalida;

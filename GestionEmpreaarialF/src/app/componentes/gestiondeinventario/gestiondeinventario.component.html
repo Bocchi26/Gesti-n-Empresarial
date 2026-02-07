@@ -1,1 +1,37 @@
-<p>gestiondeinventario works!</p>
+<div class="inventory-container">
+    <h1>Inventario</h1>
+    <p class="subtitle">Tabla de Contenido</p>
+  
+    <table class="inventory-table" *ngIf="productos.length > 0">
+      <thead>
+        <tr>
+          <th>ID del producto</th>
+          <th>Nombre</th>
+          <th>Cantidad Disponible</th>
+          <th>Fecha de vencimiento</th>
+          <th>Cantidad en Camino</th>
+          <th>Stock Bajo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of productos">
+          <td>{{ p.idProducto }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.stock }}</td>
+          <td>{{p.fechaVencimiento}}</td>
+          <td>{{ p.cantidadEnCamino }}</td>
+          <td>
+            <span [ngClass]="{'low-stock': p.stock <= 10, 'sufficient-stock': p.stock > 10}" 
+                [style.backgroundColor]="p.stock <= 10 ? 'red' : 'green'" 
+                style="display: inline-block; width: 20px; height: 20px; border: 2px solid;">
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="!carga" class="no-products-message">
+      <p>Cargando productos en el inventario...</p>
+    </div>
+    <div *ngIf="productos.length === 0 && carga" class="no-products-message">
+      <p>Cargando productos en el inventario...</p>
+  </div>

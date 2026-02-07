@@ -2,6 +2,7 @@ package com.example.demo.modelo;
 
 import java.sql.Date;
 
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.*;
@@ -21,16 +22,20 @@ public class PuntoVenta {
 
     @Column(name = "cantidadVendido")
     private int cantidadVendido;
+    
+    @Column (name="idProducto")
+    private Long idProducto;
 
 	public PuntoVenta() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public PuntoVenta(Date fechaVenta,  int cantidadVendido) {
+	public PuntoVenta(Date fechaVenta,  int cantidadVendido, Long idProducto) {
 		super();
 		this.fechaVenta = fechaVenta;
 		this.cantidadVendido = cantidadVendido;
+		this.idProducto = idProducto;
 	}
 
 	public Long getIdPos() {
@@ -50,6 +55,14 @@ public class PuntoVenta {
 
 	public int getCantidadVendido() {
 		return cantidadVendido;
+	}
+
+	public Long getIdProducto() {
+		return idProducto;
+	}
+
+	public void setIdProducto(Long idProducto) {
+		this.idProducto = idProducto;
 	}
 
 	public void setCantidadVendido(int cantidadVendido) {

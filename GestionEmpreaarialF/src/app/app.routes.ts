@@ -9,9 +9,9 @@ import { EntradaysalidaComponent } from './componentes/entradaysalida/entradaysa
 import { GestiondeinventarioComponent } from './componentes/gestiondeinventario/gestiondeinventario.component';
 import { GestiondepedidosComponent } from './componentes/gestiondepedidos/gestiondepedidos.component';
 import { RegistrarSalidaComponent } from './componentes/registrar-salida/registrar-salida.component';
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
-    {path: "login", component: LoginComponent},
     {path: "navegador", component: NavegadorComponent},
     {path: "actualizarProducto", component: ActualizarproductoComponent},
     {path: "agregarProductos", component: AgregarproductosComponent},

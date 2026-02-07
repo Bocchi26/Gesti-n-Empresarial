@@ -29,7 +29,9 @@
      [routerLinkActiveOptions]="{ exact: true }">
     <strong>Gestión de Pedidos</strong>
   </a>
-  <a routerLink="/agregarProductos"
+
+  <a *ngIf="rolUsuario === 'admin'"
+    routerLink="/agregarProductos"
      routerLinkActive="active"
      [routerLinkActiveOptions]="{ exact: true }">
     Agregar Producto
@@ -39,7 +41,8 @@
      [routerLinkActiveOptions]="{ exact: true }">
     Consultar Producto
   </a>
-  <a routerLink="/actualizarProducto"
+  <a *ngIf="rolUsuario === 'admin'"
+     routerLink="/actualizarProducto"
      routerLinkActive="active"
      [routerLinkActiveOptions]="{ exact: true }">
     Actualizar Producto
@@ -49,9 +52,12 @@
      [routerLinkActiveOptions]="{ exact: true }">
     Registrar Salida
   </a>
-  <a routerLink="/cerrarSesion"
-     routerLinkActive="active"
-     [routerLinkActiveOptions]="{ exact: true }">
-    Cerrar Sesión
-  </a>
+  <div class="logout">
+    <a routerLink="/cerrarSesion"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{ exact: true }" 
+       (click)="cerrarSesion()">
+      Cerrar Sesión
+    </a>
+  </div>
 </div>

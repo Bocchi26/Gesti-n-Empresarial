@@ -1,1 +1,142 @@
-<p>actualizarproducto works!</p>
+<div class="actualizar-producto-container">
+  <h1>Actualizar Producto</h1>
+
+  <form (ngSubmit)="buscarProducto()" class="form-buscar">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="nombreProducto">Nombre del Producto</label>
+        <input id="nombreProducto" [(ngModel)]="nombreProducto" name="nombreProducto" type="text" placeholder="Ingrese el nombre del producto">
+      </div>
+      <div class="form-group-boton">
+        <button type="submit">Buscar</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="tabla-container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID del producto</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Estado</th>
+          <th>Cantidad (en stock)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productosEncontrados" (click)="actualizarProducto(producto)">
+          <td>{{ producto.idProducto }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>{{ producto.estado }}</td>
+          <td>{{ producto.stock }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+  
+<!----><!-- Modal para actualizar producto -->
+<!-- Contenedor del modal (overlay + contenido) bajo un único *ngIf* -->
+<div *ngIf="mostrarFormularioActualizar">
+  <!-- Overlay -->
+  <div class="modal-overlay" (click)="cerrarModal()">
+    <!-- Modal centrado -->
+    <div class="modal-container">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="close-button" (click)="cerrarModal()">×</button>
+
+        <h2>Actualizar Datos</h2>
+
+        <form [formGroup]="formularioActualizar" class="form-grid">
+          <!-- Nombre (full) -->
+          <div class="form-group full-width">
+            <label for="nombre">Nombre del Producto:</label>
+            <input id="nombre" formControlName="nombre" type="text"[ngClass]="{'is-invalid': formularioActualizar.get('nombre')?.invalid && formularioActualizar.get('nombre')?.touched}">
+            <div class="invalid-feedback" *ngIf="formularioActualizar.get('nombre')?.errors?.['required'] && formularioActualizar.get('nombre')?.touched">
+              El nombre es obligatorio.
+            </div>
+          </div>
+          
+
+          <!-- Tipo + Fecha -->
+          <div class="form-group">
+            <label for="tipo">Tipo de Producto:</label>
+              <select id="tipo" formControlName="tipo" [ngClass]="{'is-invalid': formularioActualizar.get('tipo')?.invalid && formularioActualizar.get('tipo')?.touched}">
+                <option value="">Selecciona un tipo</option>
+                <option value="frutas">Frutas</option>
+                <option value="verduras">Verduras</option>
+                <option value="aseo">Aseo</option>
+                <option value="bebidas">Bebidas</option>
+                <option value="procesados">Procesados</option>
+              </select>
+              <div class="invalid-feedback" *ngIf="formularioActualizar.get('tipo')?.errors?.['required'] && formularioActualizar.get('tipo')?.touched">
+                El tipo es obligatorio.
+              </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="fechaVencimiento">Fecha de Vencimiento:</label>
+            <input id="fechaVencimiento" formControlName="fechaVencimiento" type="date" [ngClass]="{'is-invalid': formularioActualizar.get('fechaVencimiento')?.invalid && formularioActualizar.get('fechaVencimiento')?.touched}">
+            <div class="invalid-feedback" *ngIf="formularioActualizar.get('fechaVencimiento')?.errors?.['required'] && formularioActualizar.get('fechaVencimiento')?.touched">
+              La fecha de vencimiento es obligatoria.
+            </div>
+          </div>
+          
+
+          <!-- Precio Unitario + Precio Compra -->
+          <div class="form-group">
+            <label for="precioUnitario">Precio Unitario:</label>
+            <input id="precioUnitario" formControlName="precioUnitario" type="number" [ngClass]="{'is-invalid': formularioActualizar.get('precioUnitario')?.invalid && formularioActualizar.get('precioUnitario')?.touched}">
+          </div>
+          <div class="invalid-feedback" *ngIf="formularioActualizar.get('precioUnitario')?.errors?.['required'] && formularioActualizar.get('precioUnitario')?.touched">
+            El precio unitario es obligatorio.
+          </div>
+          <div class="form-group">
+            <label for="precioCompra">Precio de Compra:</label>
+            <input id="precioCompra" formControlName="precioCompra" type="number"[ngClass]="{'is-invalid': formularioActualizar.get('precioCompra')?.invalid && formularioActualizar.get('precioCompra')?.touched}">
+            <div class="invalid-feedback" *ngIf="formularioActualizar.get('precioCompra')?.errors?.['required'] && formularioActualizar.get('precioCompra')?.touched">
+              El precio de compra es obligatorio.
+            </div>
+          </div>
+          
+
+          <!-- Estado (half, la otra columna queda vacía) -->
+          <div class="form-group">
+            <label for="estado">Estado:</label>
+            <select id="estado" formControlName="estado" [ngClass]="{'is-invalid': formularioActualizar.get('estado')?.invalid && formularioActualizar.get('estado')?.touched}">
+              <option value="">Selecciona un estado</option>
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+            <div class="invalid-feedback" *ngIf="formularioActualizar.get('estado')?.errors?.['required'] && formularioActualizar.get('estado')?.touched">
+              El estado es obligatorio.
+            </div>
+          </div>
+          
+          <div></div><!-- placeholder para mantener la cuadrícula -->
+
+          <!-- Descripción (full) -->
+          <div class="form-group full-width">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" formControlName="descripcion" rows="3" [ngClass]="{'is-invalid': formularioActualizar.get('descripcion')?.invalid && formularioActualizar.get('descripcion')?.touched}"></textarea>
+            <div class="invalid-feedback" *ngIf="formularioActualizar.get('descripcion')?.errors?.['required'] && formularioActualizar.get('descripcion')?.touched">
+              La descripción es obligatoria.
+            </div>
+          </div>
+          
+
+          <!-- Botón (full, centrado) -->
+          <div class="form-actions">
+            <button type="button" (click)="onSubmit()">GUARDAR</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

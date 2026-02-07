@@ -1,5 +1,10 @@
 package com.example.demo.repositorio;
 
-public interface PedidoProveedorRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.example.demo.modelo.PedidoProveedor;
+
+
+public interface PedidoProveedorRepo extends JpaRepository<PedidoProveedor,Long>{
+	
 }

@@ -1,0 +1,45 @@
+.inventory-container {
+    width: 90%;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .inventory-container h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .inventory-container .subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .inventory-table th,
+  .inventory-table td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .inventory-table th {
+    background-color: #0D2137;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .inventory-table td {
+    background-color: white;
+  }
+  
+  .low-stock {
+    color: #c00;
+    font-weight: bold;
+  }

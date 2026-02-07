@@ -28,7 +28,7 @@
     width: 100%;
     border-collapse: collapse;
     th {
-      background-color: #003d66;
+      background-color: #0D2137;
       color: #fff;
       padding: 0.75rem;
       text-align: center;
@@ -122,7 +122,7 @@
       margin-top: 1rem;
   
       th {
-        background-color: #003d66;
+        background-color: #0D2137;
         color: #fff;
         padding: 0.5rem;
         text-align: left;
@@ -173,4 +173,102 @@
     }
   }
   
+ /* Fondo difuminado */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+/* Ventana emergente */
+.modal-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  max-width: 800px;
+  transform: translate(-50%, -50%);
+  background-color: #d9d9d9;
+  padding: 30px;
+  border-radius: 10px;
+  z-index: 100;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  font-family: sans-serif;
+}
+
+/* Título */
+.modal-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+/* Tabla */
+.modal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.modal-table th,
+.modal-table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.modal-table th {
+  background-color: #0D2137;
+  color: white;
+  font-weight: bold;
+}
+
+.modal-table td input[type="number"] {
+  width: 80px;
+  padding: 6px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Footer */
+.modal-footer {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Botón confirmar */
+.btn-confirmar {
+  background-color: #337ab7;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-confirmar:hover {
+  background-color: #2a65a0;
+}
+
+/* Botón de cerrar */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
   

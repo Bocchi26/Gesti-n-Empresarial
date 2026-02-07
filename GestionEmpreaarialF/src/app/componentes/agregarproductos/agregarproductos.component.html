@@ -1,1 +1,53 @@
-<p>agregarproductos works!</p>
+<div class="form-container">
+  <h1>Agregar Producto</h1>
+
+  <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="nombre">Nombre del Producto</label>
+        <input id="nombre" formControlName="nombre" type="text">
+      </div>
+      <div class="form-group">
+        <label for="tipo">Tipo de Producto</label>
+        <select id="tipo" formControlName="tipo">
+          <option value="">Selecciona un tipo</option>
+          <option value="frutas">Frutas</option>
+          <option value="verduras">Verduras</option>
+          <option value="aseo">Aseo</option>
+          <option value="bebidas">Bebidas</option>
+          <option value="procesados">Procesados</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" formControlName="descripcion" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="fechaVencimiento">Fecha de Vencimiento</label>
+        <input id="fechaVencimiento" formControlName="fechaVencimiento" type="date">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="precioUnitario">Precio Unitario</label>
+        <input id="precioUnitario" formControlName="precioUnitario" type="number">
+      </div>
+      <div class="form-group">
+        <label for="stock">Cantidad</label>
+        <input id="stock" formControlName="stock" type="number">
+      </div>
+      <div class="form-group">
+        <label for="precioCompra">Precio de Compra</label>
+        <input id="precioCompra" formControlName="precioCompra" type="number">
+      </div>
+    </div>
+
+    <div class="form-button">
+      <button type="submit">REGISTRAR</button>
+    </div>
+  </form>
+</div>
